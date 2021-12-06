@@ -8,7 +8,7 @@ if (workbox) {
 	workbox.routing.registerRoute(
 		/(.*)others(.*)\.(?:png|gif|jpg)/,
 		new workbox.strategies.CacheFirst({
-			cacheName: "imagenes",
+			cacheName: "images",
 			plugins: [
 				new workbox.expiration.Plugin({
 					maxEntries:50,
@@ -20,7 +20,7 @@ if (workbox) {
 
 
 workbox.routing.registerRoute(
-		/.*(?:css|js|scss|)/,
+		/.*\.(?:css|js|scss|)/,
 	new workbox.strategies.StaleWhileRevalidate({
 		cacheName: "assets",
 	})
@@ -28,7 +28,7 @@ workbox.routing.registerRoute(
 );
 
 workbox.routing.registerRoute(
-	new RegExp("https:fonts.(?:googleapis|gstatic).com/ (.*)"),
+	new RegExp("https:fonts.(?:googleapis|gstatic).com/(.*)"),
 	new workbox.strategies.CacheFirst({
 		cacheName: "google-fonts",
 		plugins:[
@@ -48,3 +48,4 @@ workbox.core.clientsClain();
 	console.log("¡Fallo! workbox no esta cargado ): "):
 
 }
+
